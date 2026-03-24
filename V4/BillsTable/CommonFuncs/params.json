@@ -1,0 +1,5 @@
+{
+  "TableName": "BillsTable",
+  "DataPath": "Data",
+  "Columns": []
+}
