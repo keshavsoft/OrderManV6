@@ -32,10 +32,10 @@ function main() {
 
     prepareRepo();
 
-    // let tablesObject = {};
-    // tablesObject.tables = prepareTotalObject();
+    let tablesObject = {};
+    tablesObject.tables = prepareTotalObject();
 
-    // processSchema(versionPath, tablesObject);
+    processSchema(versionPath, tablesObject);
 
     console.log("\n✔ All schemas processed successfully");
 }
