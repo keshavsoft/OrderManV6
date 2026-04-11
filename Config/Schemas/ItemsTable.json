@@ -83,6 +83,13 @@
             "defaultvalue": 18,
             "isConsider": true,
             "showInUi": true
+        },
+        {
+            "field": "ParentPk",
+            "title": "ParentPk",
+            "unique": false,
+            "isConsider": true,
+            "showInUi": true
         }
     ],
     "data": [],
