@@ -1,4 +1,4 @@
-import { initTable } from "./KSTableAi/V7/entry.js";
+import { initTable } from "./KSTableAi/V8/entry.js";
 
 const config1 = {
     containerId: 'kSTableContainer',
@@ -70,12 +70,17 @@ const config = {
         { columnName: "ItemName", isRequired: true, tableFooterDataListShow: true },
         { columnName: "Rate", isRequired: false },
         { columnName: "Qty", isRequired: false },
+        { columnName: "Amount", isRequired: false },
+        { columnName: "TaxPer", isRequired: false },
+        { columnName: "Uom", isRequired: false },
+        { columnName: "ParentPk", isRequired: false },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
     ],
     layout: {
         verticalPosition: "top" // or left/right/bottom
     }
 };
+
 
 let startFunc = async () => {
     await initTable(config);
