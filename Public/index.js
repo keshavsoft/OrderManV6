@@ -1,4 +1,4 @@
-import { initTable } from "./KSTableAi/V6/entry.js";
+import { initTable } from "./KSTableAi/V7/entry.js";
 
 const config = {
     containerId: 'kSTableContainer',
@@ -18,7 +18,7 @@ const config = {
         },
         table: {
             showSerial: true,
-            showFooter: false,
+            showFooter: true,
             footer: {
                 showDataList: true
             }
