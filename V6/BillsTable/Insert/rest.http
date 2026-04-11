@@ -1,0 +1,12 @@
+
+POST http://localhost:3000/V6/BillsTable/Insert
+Content-Type: application/json
+
+{
+  "LedgerName": "P.Simhadri, Vemulavada",
+  "LedgerParentName": "",
+  "LedgerGST": "",
+  "InvoiceNo": "",
+  "InvoiceDate": "20260324",
+  "InvoiceStateCode": ""
+}
