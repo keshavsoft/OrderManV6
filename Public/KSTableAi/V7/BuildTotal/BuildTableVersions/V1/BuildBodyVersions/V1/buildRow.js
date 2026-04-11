@@ -4,7 +4,10 @@ import { createDataCell } from "./createDataCell.js";
 import { createOptionsCell } from "./createOptionsCell.js";
 
 const buildRow = ({ item, index, inVisibleColumns, options, searchValue }) => {
-    const tr = createRow();
+    const tr = createRow({
+        inClassName: "border-t hover:bg-blue-100 odd:bg-gray-100",
+        inPk: item?.pk
+    });
 
     appendSerialCell(tr, options?.showSerial, index);
 

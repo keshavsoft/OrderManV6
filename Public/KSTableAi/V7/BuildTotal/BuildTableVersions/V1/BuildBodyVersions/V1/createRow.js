@@ -1,6 +1,8 @@
-const createRow = () => {
+const createRow = ({ inPk, inClassName }) => {
     const tr = document.createElement("tr");
-    tr.className = "border-t hover:bg-blue-100 odd:bg-gray-100";
+    tr.className = inClassName;
+    tr.dataset.pk = inPk;
+
     return tr;
 };
 

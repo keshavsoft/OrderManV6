@@ -1,15 +1,11 @@
-const deleteItem = async ({ tableName, payload }) => {
-    const res = await fetch(`/api/${tableName}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
+const deleteItem = async ({ inEndPoint, id }) => {
+    const res = await fetch(`${inEndPoint}/${id}`, {
+        method: "DELETE"
     });
 
     if (!res.ok) throw new Error("Create failed");
 
-    return await res.json();
+    return await res.text();
 };
 
 export { deleteItem };

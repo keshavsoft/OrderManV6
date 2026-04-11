@@ -7,16 +7,26 @@ const initTable = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, i
     const data = inData;
     const columns = inDataStore.getColumns();
     const visibleColumns = inVisibleColumns;
+    const showActions = inOptions.table.showRowOptions;
 
     buildHeader({
         inVisibleColumns: visibleColumns,
         inContainerEl,
         inDom,
         options: {
-            showActions: inOptions.table.showRowOptions,
+            showActions,
             showSerial: inOptions.table.showSerial
         }
     });
+
+    const handleDelete = async ({ presentPk }) => {
+        debugger;
+
+        await inServices.actions.remove({
+            inEndPoint: inEndPoints.delete,
+            id: presentPk
+        })
+    };
 
     pureBuildBody({
         inContainerEl,
@@ -24,10 +34,10 @@ const initTable = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, i
         inData: data,
         inDom,
         options: {
-            showActions: inOptions.table.showRowOptions,
+            showActions,
             showSerial: inOptions.table.showSerial,
             onEdit: ({ item }) => console.log("edit", item),
-            onDelete: ({ index }) => console.log("delete", index)
+            onDelete: handleDelete,
         }
     });
 

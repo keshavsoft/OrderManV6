@@ -1,5 +1,6 @@
 import { createItem } from "./createItem.js";
 import { getDataFromFetch } from "./getData.js";
+import { deleteItem } from "./deleteItem.js";
 
 export const createServices = ({ tableName }) => {
     return {
@@ -7,7 +8,7 @@ export const createServices = ({ tableName }) => {
             getData: ({ inEndPoint }) => getDataFromFetch({ inEndPoint }),
             create: ({ inEndPoint, payload }) => createItem({ inEndPoint, payload }),
             update: (id, payload) => updateItem({ tableName, id, payload }),
-            remove: (id) => deleteItem({ tableName, id })
+            remove: ({ inEndPoint, id }) => deleteItem({ inEndPoint, id })
         }
     };
 };

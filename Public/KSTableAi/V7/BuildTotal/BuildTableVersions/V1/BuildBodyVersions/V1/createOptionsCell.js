@@ -10,7 +10,7 @@ const createOptionsCell = ({ item, index, onEdit, onDelete }) => {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.className = "px-2 py-1 bg-red-500 text-white rounded";
-    deleteBtn.onclick = () => onDelete?.({ item, index });
+    deleteBtn.onclick = () => onDelete?.({ item, index, presentPk: item.pk });
 
     td.appendChild(editBtn);
     td.appendChild(deleteBtn);
