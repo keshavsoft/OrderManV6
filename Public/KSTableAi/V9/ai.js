@@ -1,6 +1,6 @@
 // ai.js
 
-import { createStore } from "./tableStore.js";
+// import { createStore } from "./tableStore.js";
 import { createState } from "./HtmlState/start.js";
 import { getDomManipulation } from "./DomManipulation/start.js";
 import { createServices } from "./Services/createServices.js";
@@ -8,6 +8,8 @@ import { validateConfig } from "./Utils/validateConfig.js";
 import { initRender } from "./BuildTotal/initRender.js";
 import { normalizeConfig } from "./Utils/normalizeConfig.js";
 import { focusToEl } from "./focusSet.js";
+
+import { createStore } from "./TableStore/V1/start.js";
 
 const prepareDefaultRow = (columnsConfig) => {
     const row = {};
