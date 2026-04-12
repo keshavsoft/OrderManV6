@@ -3,6 +3,7 @@ import http from 'http';
 import { router as routerFromV4 } from "./V4/routes.js";
 import { router as routerFromV5 } from "./V5/routes.js";
 import { router as routerFromV6 } from "./V6/routes.js";
+import { router as routerFromV7 } from "./V7/routes.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -13,6 +14,7 @@ app.use(express.static('Public'));
 app.use("/V4", routerFromV4);
 app.use('/V5', routerFromV5);
 app.use('/V6', routerFromV6);
+app.use('/V7', routerFromV7);
 
 function normalizePort(val) {
     var port = parseInt(val, 10);
