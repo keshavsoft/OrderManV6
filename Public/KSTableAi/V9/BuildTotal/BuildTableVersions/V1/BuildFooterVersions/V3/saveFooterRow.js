@@ -14,12 +14,13 @@ const saveFooterRow = async ({
     inContainerEl,
     inOptions,
     inColumnsConfig,
-    inVisibleColumns
+    inVisibleColumns,
+    inDefaultObject
 }) => {
 
     const payload = getFooterPayload({
         tr, inDom,
-        inVisibleColumns
+        inVisibleColumns, inDefaultObject
     });
 
     clearErrors(tr);

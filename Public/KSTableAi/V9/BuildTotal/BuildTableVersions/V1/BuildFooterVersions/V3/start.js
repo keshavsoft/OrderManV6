@@ -4,6 +4,8 @@ import { saveFooterRow } from "./saveFooterRow.js";
 const buildFooter = ({ inDataStore, inContainerEl, inDom, inServices, inOptions, inEndPoints, inColumnsConfig,
     inVisibleColumns
 }) => {
+    const defaultObject = inDataStore.getDefaultRow();
+
     const handleSave = async (e) => {
         const tr = e.target.closest("tr");
 
@@ -16,7 +18,8 @@ const buildFooter = ({ inDataStore, inContainerEl, inDom, inServices, inOptions,
             inContainerEl,
             inOptions,
             inColumnsConfig,
-            inVisibleColumns
+            inVisibleColumns,
+            inDefaultObject: defaultObject
         });
     };
 

@@ -109,7 +109,7 @@ const config2 = {
 };
 
 const configItemsTable = {
-    containerId: 'kSTableContainer',
+    containerId: 'kSSubTableContainer',
     tableName: "ItemsTable",
     endPoints: {
         create: "/V6/ItemsTable/Insert",
@@ -125,6 +125,7 @@ const configItemsTable = {
             showVertical: false
         },
         table: {
+            showTable: true,
             showRowOptions: true,
             showSerial: true,
             showFooter: true,
@@ -143,7 +144,7 @@ const configItemsTable = {
         { columnName: "Amount", isRequired: false },
         { columnName: "TaxPer", isRequired: false },
         { columnName: "Uom", isRequired: false },
-        { columnName: "ParentPk", isRequired: false },
+        { columnName: "ParentPk", isRequired: false, defaultValue: "3", isVisible: false },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
     ],
     layout: {
@@ -155,6 +156,8 @@ const configItemsTable = {
 let startFunc = async () => {
 
     await initTable(config);
+
+    await initTable(configItemsTable);
 };
 
 startFunc();

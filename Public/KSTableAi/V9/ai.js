@@ -9,6 +9,18 @@ import { initRender } from "./BuildTotal/initRender.js";
 import { normalizeConfig } from "./Utils/normalizeConfig.js";
 import { focusToEl } from "./focusSet.js";
 
+const prepareDefaultRow = (columnsConfig) => {
+    const row = {};
+
+    columnsConfig.forEach((col) => {
+        if (col.defaultValue !== undefined) {
+            row[col.columnName] = col.defaultValue;
+        }
+    });
+
+    return row;
+};
+
 const setColumns = (inColumnsConfig) => {
     state.columns = inColumnsConfig.map(c => c.columnName);
     state.visibleColumns = inColumnsConfig
@@ -36,6 +48,10 @@ class KSAiTable {
         this.dom = getDomManipulation();
 
         this.uiState.setTableContainerId(containerId);
+        
+        const defaultRow = prepareDefaultRow(columnsConfig);
+        
+        this.dataStore.setDefaultRow(defaultRow);
 
         this.options = options;
         this.endPoints = endPoints;

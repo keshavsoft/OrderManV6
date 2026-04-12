@@ -5,7 +5,15 @@ export const createStore = () => {
     let tableName = "";
     let visibleColumns = [];
 
+    let defaultRow = {};
+
     return {
+        setDefaultRow: (row) => {
+            defaultRow = row;
+        },
+        getDefaultRow: () => {
+            return defaultRow;
+        },
         setData(inData) {
             data = inData;
             // keys = Object.keys(inData[0] || {});
