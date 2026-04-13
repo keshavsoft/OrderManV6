@@ -5,6 +5,7 @@ import { router as routerFromV5 } from "./V5/routes.js";
 import { router as routerFromV6 } from "./V6/routes.js";
 import { router as routerFromV7 } from "./V7/routes.js";
 import { router as routerFromV8 } from "./V8/routes.js";
+import { router as routerFromApi } from "./Api/routes.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -17,6 +18,7 @@ app.use('/V5', routerFromV5);
 app.use('/V6', routerFromV6);
 app.use('/V7', routerFromV7);
 app.use('/V8', routerFromV8);
+app.use('/Api', routerFromApi);
 
 function normalizePort(val) {
     var port = parseInt(val, 10);

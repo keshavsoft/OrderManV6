@@ -1,20 +1,20 @@
-import { initTable } from "../../KSTableAi/V10/entry.js";
+import { initTable } from "../../KSTableAi/V11/entry.js";
 
 const config = {
     containerId: 'kSTableContainer',
     tableName: "Bills",
     endPoints: {
-        create: "/V6/BillsTable/Insert",
+        create: "/Api/V9/BillsTable/Insert",
         update: "",
-        delete: "/V6/BillsTable/Delete",
-        read: "/V6/BillsTable/ShowAll"
+        delete: "/Api/V9/BillsTable/Delete",
+        read: "/Api/V9/BillsTable/ShowAll"
     },
     options: {
         firstRow: {
             showSearch: false
         },
         vertical: {
-            showVertical: false
+            showVertical: true
         },
         dataList: {
             show: false
@@ -23,7 +23,7 @@ const config = {
             showTable: true,
             showRowOptions: true,
             showSerial: true,
-            showFooter: false,
+            showFooter: true,
             footer: {
                 showDataList: true
             }
