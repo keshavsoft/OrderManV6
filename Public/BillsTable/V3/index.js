@@ -1,4 +1,4 @@
-import { initTable } from "../../KSTableAi/V13/entry.js";
+import { initTable } from "../../KSTableAi/V14/entry.js";
 
 const config = {
     containerId: 'kSTableContainer',
@@ -53,7 +53,7 @@ const configSubTable = {
         create: "/Api/V9/BillsTable/Insert",
         update: "",
         delete: "/Api/V9/BillsTable/Delete",
-        read: "/Api/V9/ItemsTable/ShowAll",
+        read: "/Api/V9/ItemsTable/filter?ParentPk=1",
         find: "/Api/V9/BillsTable/find"
     },
     options: {
@@ -73,7 +73,7 @@ const configSubTable = {
             showTable: true,
             showRowOptions: true,
             showSerial: true,
-            showFooter: false,
+            showFooter: true,
             footer: {
                 showDataList: true
             }
@@ -86,6 +86,7 @@ const configSubTable = {
         { columnName: "ItemName", isRequired: true, tableFooterDataListShow: true },
         { columnName: "Rate", isRequired: true },
         { columnName: "Qty", isRequired: false },
+        { columnName: "ParentPk", isRequired: false, defaultValue: 1 },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
     ],
     layout: {
@@ -94,7 +95,7 @@ const configSubTable = {
 };
 
 let startFunc = async () => {
-     await initTable(config);
+    await initTable(config);
 
     await initTable(configSubTable);
 };
