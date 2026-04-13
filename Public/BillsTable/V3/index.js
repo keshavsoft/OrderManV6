@@ -94,7 +94,7 @@ const configSubTable = {
 };
 
 let startFunc = async () => {
-    // await initTable(config);
+     await initTable(config);
 
     await initTable(configSubTable);
 };
