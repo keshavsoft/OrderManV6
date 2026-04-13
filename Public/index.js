@@ -1,4 +1,4 @@
-import { initTable } from "./KSTableAi/V9/entry.js";
+import { initTable } from "./KSTableAi/V10/entry.js";
 
 const config1 = {
     containerId: 'kSTableContainer',
@@ -65,8 +65,7 @@ const config = {
             footer: {
                 showDataList: true
             }
-        },
-
+        }
     },
     columnsConfig: [
         { columnName: "LedgerName", isRequired: true, tableFooterDataListShow: true },
