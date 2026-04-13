@@ -1,4 +1,4 @@
-import { initTable } from "../../KSTableAi/V11/entry.js";
+import { initTable } from "../../KSTableAi/V12/entry.js";
 
 const config = {
     containerId: 'kSTableContainer',
@@ -31,7 +31,7 @@ const config = {
     },
     columnsConfig: [
         { columnName: "LedgerName", isRequired: true, tableFooterDataListShow: true },
-        { columnName: "InvoiceDate", isRequired: false },
+        { columnName: "InvoiceDate", isRequired: false, defaultValue: "20260327" },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
     ],
     layout: {
