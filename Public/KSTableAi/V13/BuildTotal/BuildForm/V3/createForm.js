@@ -1,0 +1,48 @@
+import { createInputRow } from "./createInputRow.js";
+import { createButton } from "./createButton.js";
+
+const createForm = ({ columns, inDataStore,
+    inDefaultRow, onSubmit, uiClasses, inIsDisabled }) => {
+
+    const defaultRow = inDefaultRow;
+
+    const formClass = uiClasses.formClass;
+    const inputClass = uiClasses.inputClass;
+    const buttonClass = uiClasses.buttonClass;
+    const rowClass = uiClasses.rowClass;
+    const labelClass = uiClasses.labelClass;
+
+    const form = document.createElement('form');
+    form.className = formClass;
+
+    const fieldset = document.createElement('fieldset');
+    fieldset.disabled = inIsDisabled; // when needed
+
+    form.appendChild(fieldset);
+    const inputs = {};
+
+    columns.forEach(col => {
+        const row = createInputRow({
+            inCol: col,
+            inDefaultRow: defaultRow,
+            inInputs: inputs,
+            inInputClass: inputClass,
+            inRowClass: rowClass,
+            inLabelClass: labelClass
+        });
+
+        fieldset.appendChild(row);
+    });
+
+    const button = createButton({
+        inButtonClass: buttonClass,
+        inInputs: inputs,
+        inOnSubmit: onSubmit
+    });
+
+    fieldset.appendChild(button);
+
+    return form;
+};
+
+export { createForm };

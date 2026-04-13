@@ -1,4 +1,4 @@
-import { initTable } from "../../KSTableAi/V12/entry.js";
+import { initTable } from "../../KSTableAi/V13/entry.js";
 
 const config = {
     containerId: 'kSTableContainer',
@@ -14,19 +14,24 @@ const config = {
             showSearch: false
         },
         vertical: {
-            showVertical: true
+            showVertical: true,
+            isDisabled: true
         },
         dataList: {
-            show: false
+            show: false,
         },
         table: {
+            isDisabled: true,
             showTable: true,
             showRowOptions: true,
             showSerial: true,
-            showFooter: true,
+            showFooter: false,
             footer: {
                 showDataList: true
             }
+        },
+        focus: {
+            priority: ["vertical", "footer", "search"]
         }
     },
     columnsConfig: [
