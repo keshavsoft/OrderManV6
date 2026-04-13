@@ -1,5 +1,6 @@
 import { createForm } from "./V3/createForm.js";
 import { afterMutation } from "../afterMutation.js";
+// import { applyProjection } from "./applyProjection.js";
 
 const buildForm = ({
     inContainerEl,
@@ -20,7 +21,9 @@ const buildForm = ({
     inFormClass,
     inButtonClass,
     uiClasses,
-    inIsDisabled
+    inIsDisabled,
+    showSaveButton,
+    inFindData
 }) => {
     const handleSave = async (newItem) => {
         await inServices.actions.create({
@@ -49,10 +52,22 @@ const buildForm = ({
         inDefaultRow,
         onSubmit: handleSave,
         uiClasses,
-        inIsDisabled
+        inIsDisabled,
+        showSaveButton
     });
 
     inContainerEl.prepend(form);
+    debugger;
+    applyProjectionToTableRow({ tr: form, projection: inFindData })
+};
+
+const applyProjectionToTableRow = ({ tr, projection }) => {
+    Object.entries(projection).forEach(([key, value]) => {
+        const cell = tr.querySelector(`[name="${key}"]`);
+        if (cell) {
+            cell.value = value;
+        }
+    });
 };
 
 export { buildForm };

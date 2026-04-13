@@ -12,8 +12,9 @@ import { createStore } from "./TableStore/V2/start.js";
 
 class KSAiTable {
     constructor(inConfig) {
+        debugger;
         const config = normalizeConfig(inConfig);
-        // debugger;
+        
         validateConfig(config);
 
         const { containerId, options, endPoints, columnsConfig } = config;
@@ -72,7 +73,17 @@ class KSAiTable {
             };
 
             this.dataStore.setData(dataFromFetch);
-        }
+        };
+
+
+        if (endPoints?.find) {
+            const dataFromFetch = await this.services.actions.find({
+                inEndPoint: endPoints.find,
+                id: 2
+            });
+
+            this.dataStore.setFindData(dataFromFetch);
+        };
     };
 
     setupServices() {

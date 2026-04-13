@@ -7,7 +7,8 @@ const config = {
         create: "/Api/V9/BillsTable/Insert",
         update: "",
         delete: "/Api/V9/BillsTable/Delete",
-        read: "/Api/V9/BillsTable/ShowAll"
+        read: "/Api/V9/BillsTable/ShowAll",
+        find: "/Api/V9/BillsTable/find"
     },
     options: {
         firstRow: {
@@ -15,7 +16,8 @@ const config = {
         },
         vertical: {
             showVertical: true,
-            isDisabled: true
+            isDisabled: true,
+            showSaveButton: false
         },
         dataList: {
             show: false,

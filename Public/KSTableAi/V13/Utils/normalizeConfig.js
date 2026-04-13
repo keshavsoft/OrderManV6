@@ -10,6 +10,7 @@ const normalizeConfig = (cfg = {}) => {
     cfg.options.table.showFooter ??= false;
     cfg.options.table.showRowOptions ??= false;
     cfg.options.table.showSerial ??= false;
+    cfg.options.table.showTable ??= false;
 
     cfg.options.table.footer ??= {};
     cfg.options.table.footer.showDataList ??= false;

@@ -1,7 +1,7 @@
 import { createInputRow } from "./createInputRow.js";
 import { createButton } from "./createButton.js";
 
-const createForm = ({ columns, inDataStore,
+const createForm = ({ columns, inDataStore, showSaveButton,
     inDefaultRow, onSubmit, uiClasses, inIsDisabled }) => {
 
     const defaultRow = inDefaultRow;
@@ -34,13 +34,15 @@ const createForm = ({ columns, inDataStore,
         fieldset.appendChild(row);
     });
 
-    const button = createButton({
-        inButtonClass: buttonClass,
-        inInputs: inputs,
-        inOnSubmit: onSubmit
-    });
+    if (showSaveButton) {
+        const button = createButton({
+            inButtonClass: buttonClass,
+            inInputs: inputs,
+            inOnSubmit: onSubmit
+        });
 
-    fieldset.appendChild(button);
+        fieldset.appendChild(button);
+    };
 
     return form;
 };

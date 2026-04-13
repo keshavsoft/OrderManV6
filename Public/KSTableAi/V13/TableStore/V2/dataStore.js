@@ -1,6 +1,7 @@
 export const createDataStore = () => {
     let data = [];
     let searchConfig = { type: "global", value: "" };
+    let findData = {};
 
     return {
         setData: (inData) => { data = inData; },
@@ -33,6 +34,8 @@ export const createDataStore = () => {
                 }
             }
             return result;
-        }
+        },
+        setFindData: (inData) => { findData = inData; },
+        getFindData: () => findData,
     };
 };

@@ -48,7 +48,9 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
 
     if (inOptions.vertical.showVertical) {
         const inIsDisabled = inOptions.vertical.isDisabled;
-
+        const showSaveButton = inOptions.vertical.showSaveButton;
+        const findData = inDataStore.getFindData();
+        // debugger;
         buildForm({
             inContainerEl,
             inDataStore,
@@ -66,7 +68,9 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
             isBuildDataLists,
             inDefaultRow: defaultRow,
             uiClasses,
-            inIsDisabled: inIsDisabled
+            inIsDisabled: inIsDisabled,
+            showSaveButton,
+            inFindData: findData
         });
     };
     // debugger;
@@ -81,7 +85,7 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
 
         firstRow.style.display = "none";
     };
-
+    debugger;
     if (inOptions.table.showTable) {
         const inIsDisabled = inOptions.table.isDisabled;
 

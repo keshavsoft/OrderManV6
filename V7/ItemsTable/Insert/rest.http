@@ -5,9 +5,9 @@ Content-Type: application/json
 {
     "ItemName": "Monofilament Yarn Kgs-3916 18%",
     "Rate": "100",
-    "Qty": "1000",
+    "Qty": "20",
     "Amount": "2000",
     "TaxPer": "18",
     "Uom": "Kgs",
-    "ParentPk": "2"
+    "ParentPk": "1"
 }
