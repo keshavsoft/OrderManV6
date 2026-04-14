@@ -1,8 +1,13 @@
-import { initTable } from "../../../../../../KSTableAi/V15/entry.js";
+import { initTable } from "../../../KSTableAi/V17/entry.js";
 
 const config = {
     containerId: 'kSTableContainer',
-    tableName: "Bills",
+    tableName: "Bill Create",
+    mode: "show", // or "show"
+    layout: {
+        verticalPosition: "top", // or left/right/bottom
+        type: "vertical", // "vertical" | "table" | "vertical-table"
+    },
     endPoints: {
         create: "/Api/V9/BillsTable/Insert",
         update: "",
@@ -16,15 +21,15 @@ const config = {
         },
         vertical: {
             showVertical: true,
-            isDisabled: true,
-            showSaveButton: false
+            isDisabled: false,
+            showSaveButton: true
         },
         dataList: {
             show: false,
         },
         table: {
             isDisabled: true,
-            showTable: false,
+            showTable: true,
             showRowOptions: true,
             showSerial: true,
             showFooter: false,
@@ -41,19 +46,30 @@ const config = {
         { columnName: "InvoiceDate", isRequired: false, defaultValue: "20260327" },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
     ],
-    layout: {
-        verticalPosition: "top" // or left/right/bottom
+    uiClasses: {
+        form: {
+            formClass: 'grid grid-cols-3 gap-x-8 gap-y-4 p-6 verticalForm',
+            buttonClass: 'mt-2 px-4 py-1 bg-green-500 text-white',
+            rowClass: 'flex items-center space-x-4',
+            labelClass: 'w-24 text-sm font-medium',
+            inputClass: 'flex-1 border rounded px-3 py-2'
+        }
     }
 };
 
-const configSubTable = {
-    containerId: 'kSSubTableContainer',
-    tableName: "Bills",
+const configForSubTable = {
+    containerId: 'ksSubTableContainer',
+    tableName: "Bill Create",
+    mode: "create", // or "show" "create"
+    layout: {
+        verticalPosition: "top", // or left/right/bottom
+        type: "table", // "vertical" | "table" | "vertical-table"
+    },
     endPoints: {
         create: "/Api/V9/ItemsTable/Insert",
         update: "",
         delete: "/Api/V9/BillsTable/Delete",
-        read: "/Api/V9/ItemsTable/filter?ParentPk=1",
+        read: "/Api/V9/ItemsTable/filter",
         find: "/Api/V9/BillsTable/find",
         dataListEndpoints: {
             items: "/Api/V9/StockItems/ShowAll",
@@ -65,19 +81,19 @@ const configSubTable = {
             showSearch: false
         },
         vertical: {
-            showVertical: false,
-            isDisabled: true,
-            showSaveButton: false
+            showVertical: true,
+            isDisabled: false,
+            showSaveButton: true
         },
         dataList: {
             show: true,
         },
         table: {
-            isDisabled: false,
+            isDisabled: true,
             showTable: true,
             showRowOptions: true,
             showSerial: true,
-            showFooter: true,
+            showFooter: false,
             footer: {
                 showDataList: true
             }
@@ -102,18 +118,22 @@ const configSubTable = {
         { columnName: "ParentPk", isRequired: false, defaultValue: 1 },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
     ],
-    layout: {
-        verticalPosition: "top" // or left/right/bottom
+    uiClasses: {
+        form: {
+            formClass: 'grid grid-cols-3 gap-x-8 gap-y-4 p-6 verticalForm',
+            buttonClass: 'mt-2 px-4 py-1 bg-green-500 text-white',
+            rowClass: 'flex items-center space-x-4',
+            labelClass: 'w-24 text-sm font-medium',
+            inputClass: 'flex-1 border rounded px-3 py-2'
+        }
     }
 };
 
-const formSearchParamsFunc = async () => {
-    const params = new URLSearchParams(window.location.search);
-    const pk = params.get("pk");
-// config.endPoints.
+let startFunc = async () => {
     await initTable(config);
 
-    await initTable(configSubTable);
+    await initTable(configForSubTable);
+
 };
 
-export { formSearchParamsFunc };
+startFunc();

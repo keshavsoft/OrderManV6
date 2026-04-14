@@ -5,6 +5,7 @@ const config = {
     tableName: "Bill Create",
     mode: "create", // or "show"
     layout: {
+        verticalPosition: "top", // or left/right/bottom
         type: "vertical-table", // "vertical" | "table" | "vertical-table"
     },
     endPoints: {
@@ -45,9 +46,6 @@ const config = {
         { columnName: "InvoiceDate", isRequired: false, defaultValue: "20260327" },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
     ],
-    layout: {
-        verticalPosition: "top" // or left/right/bottom
-    },
     uiClasses: {
         form: {
             formClass: 'grid grid-cols-3 gap-x-8 gap-y-4 p-6 verticalForm',
