@@ -57,7 +57,7 @@ const buildForm = ({
     });
 
     inContainerEl.prepend(form);
-    debugger;
+    // debugger;
     applyProjectionToTableRow({ tr: form, projection: inFindData })
 };
 

@@ -44,7 +44,7 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
             inShowSerial: showSerial
         });
     };
-
+// debugger;
     if (isBuildDataLists) {
         buildDataLists({
             inContainerEl,

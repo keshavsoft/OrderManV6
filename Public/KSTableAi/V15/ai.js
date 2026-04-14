@@ -86,7 +86,7 @@ class KSAiTable {
             this.dataStore.setFindData(dataFromFetch);
         };
 
-        loadDataLists({
+        await loadDataLists({
             inDataStore: this.dataStore,
             inServices: this.services,
             inEndpoints: this.endPoints

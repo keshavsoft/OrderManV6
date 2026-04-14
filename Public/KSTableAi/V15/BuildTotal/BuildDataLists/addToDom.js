@@ -9,7 +9,7 @@ const getSourceData = ({ cfg, inDataStore }) => {
     const endpointKey = endpoints?.[source];
 
     if (!endpointKey) return [];
-
+debugger;
     // 🔥 now fetch actual data using endpointKey
     const data = inDataStore.getDataList(source) || [];
 
@@ -55,7 +55,7 @@ const buildDataLists = ({
 
         // 🔥 CORE FIX
         const sourceData = getSourceData({ cfg, inDataStore, inData });
-        // debugger;
+        debugger;
         const values = getUniqueValues(sourceData);
 
         const datalist = createDataListEl(col, values);
