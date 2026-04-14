@@ -1,4 +1,4 @@
-import { initTable } from "../../../KSTableAi/V15/entry.js";
+import { initTable } from "../../../KSTableAi/V16/entry.js";
 
 const config = {
     containerId: 'kSTableContainer',
