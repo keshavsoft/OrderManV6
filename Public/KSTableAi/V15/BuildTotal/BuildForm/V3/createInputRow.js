@@ -1,6 +1,5 @@
 const createInputRow = ({ inCol, inDefaultRow, inInputs, inInputClass,
     inRowClass, inLabelClass }) => {
-
     const col = inCol;
     const defaultRow = inDefaultRow;
     const inputs = inInputs;

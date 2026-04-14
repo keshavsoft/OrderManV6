@@ -23,7 +23,8 @@ const buildForm = ({
     uiClasses,
     inIsDisabled,
     showSaveButton,
-    inFindData
+    inFindData,
+    inShowTable
 }) => {
     const handleSave = async (newItem) => {
         await inServices.actions.create({
@@ -42,7 +43,8 @@ const buildForm = ({
             onDelete,
             isBuildDataLists,
             inShowActions, inShowSerial,
-            inDefaultRow
+            inDefaultRow,
+            inShowTable
         });
     };
 

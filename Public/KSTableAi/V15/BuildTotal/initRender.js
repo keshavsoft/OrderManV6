@@ -4,23 +4,9 @@ import { buildForm } from "./BuildForm/start.js";
 import { buildDataLists } from "./BuildDataLists/addToDom.js";
 import { hookAllListeners } from "./AddListeners/start.js";
 import { afterMutation } from "./afterMutation.js";
-
-const uiClasses = {
-    formClass: 'mb-4 p-4 border rounded verticalForm',
-    inputClass: 'border px-2 py-1 flex-1',
-    buttonClass: 'mt-2 px-4 py-1 bg-green-500 text-white',
-    rowClass: 'flex items-center gap-4 mb-2',
-    labelClass: 'w-40',
-};
-
-let uiClassesToApply = {};
-
-uiClassesToApply.tableClasses = {
-    tdClass: "px-4 py-2 border",
-    serialClass: "px-4 py-2 border"
-};
-
-const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, inEndPoints, inColumnsConfig }) => {
+// merge util
+const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, inEndPoints,
+    inColumnsConfig, inUiClasses }) => {
     const data = inDataStore.getData();
     const columns = inDataStore.getColumns();
     const visibleColumns = inDataStore.getVisibleColumns();
@@ -29,6 +15,7 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
     const isBuildDataLists = inOptions.dataList.show;
     const showActions = inOptions.table.showRowOptions;
     const showSerial = inOptions.table.showSerial;
+    const showTable = inOptions.table.showTable;
 
     const handleDelete = async ({ presentPk }) => {
         await inServices.actions.remove({
@@ -44,7 +31,7 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
             inShowSerial: showSerial
         });
     };
-// debugger;
+    // debugger;
     if (isBuildDataLists) {
         buildDataLists({
             inContainerEl,
@@ -76,10 +63,11 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
             inShowSerial: showSerial,
             isBuildDataLists,
             inDefaultRow: defaultRow,
-            uiClasses,
+            uiClasses: inUiClasses.form,
             inIsDisabled: inIsDisabled,
             showSaveButton,
-            inFindData: findData
+            inFindData: findData,
+            inShowTable: showTable
         });
     };
 
@@ -95,7 +83,7 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
         firstRow.style.display = "none";
     };
 
-    if (inOptions.table.showTable) {
+    if (showTable) {
         const inIsDisabled = inOptions.table.isDisabled;
 
         initTable({
@@ -114,7 +102,7 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
             inShowSerial: showSerial,
             inIsDisabled: inIsDisabled,
             inDefaultRow: defaultRow,
-            inUiClasses: uiClassesToApply.tableClasses
+            inUiClasses: inUiClasses.table
         });
     };
 

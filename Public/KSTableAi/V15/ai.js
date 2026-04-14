@@ -10,14 +10,17 @@ import { focusToEl } from "./FocusSet/V2/focusSet.js";
 
 import { createStore } from "./TableStore/V2/start.js";
 import { loadDataLists } from "./Services/dataListLoader.js";
+import { loadInitialData } from "./DataLayer/loadInitialData.js";
+import { applyMode } from "./Core/applyMode.js";
+import { KeshavUIClasses } from "./uiClasses.js";
 
 class KSAiTable {
     constructor(inConfig) {
-        const config = normalizeConfig(inConfig);
-
+        let config = normalizeConfig(inConfig);
+        config = applyMode(config);
         validateConfig(config);
 
-        const { containerId, options, endPoints, columnsConfig } = config;
+        const { containerId, options, endPoints, columnsConfig, uiClasses } = config;
 
         this.config = config;
         this.containerEl = document.getElementById(containerId);
@@ -31,6 +34,7 @@ class KSAiTable {
         this.dom = getDomManipulation();
 
         this.uiState.setTableContainerId(containerId);
+        this.uiClasses = this.mergeUI(KeshavUIClasses, uiClasses);
 
         const bundle = prepareColumnsBundle(columnsConfig);
 
@@ -43,6 +47,17 @@ class KSAiTable {
         this.options = options;
         this.endPoints = endPoints;
         this.columnsConfig = columnsConfig;
+    };
+
+    mergeUI(defaults, incoming = {}) {
+        return {
+            ...defaults,
+            ...incoming,
+            form: {
+                ...defaults.form,
+                ...incoming.form
+            }
+        };
     };
 
     async init() {
@@ -59,6 +74,21 @@ class KSAiTable {
     };
 
     async loadData() {
+        await loadInitialData({
+            config: this.config,
+            services: this.services,
+            dataStore: this.dataStore,
+            endPoints: this.endPoints
+        });
+
+        await loadDataLists({
+            inDataStore: this.dataStore,
+            inServices: this.services,
+            inEndpoints: this.endPoints
+        });
+    };
+
+    async loadData1() {
         const { data, endPoints } = this.config;
 
         if (Array.isArray(data)) {
@@ -111,7 +141,8 @@ class KSAiTable {
             inServices: this.services,
             inOptions: this.options,
             inEndPoints: this.endPoints,
-            inColumnsConfig: this.columnsConfig
+            inColumnsConfig: this.columnsConfig,
+            inUiClasses: this.uiClasses
         });
     };
 }

@@ -11,11 +11,13 @@ const createForm = ({ columns, inDataStore, showSaveButton,
     const buttonClass = uiClasses.buttonClass;
     const rowClass = uiClasses.rowClass;
     const labelClass = uiClasses.labelClass;
-
+debugger;
     const form = document.createElement('form');
-    form.className = formClass;
+    form.className = "verticalForm";
 
     const fieldset = document.createElement('fieldset');
+    fieldset.className = formClass;
+
     fieldset.disabled = inIsDisabled; // when needed
 
     form.appendChild(fieldset);

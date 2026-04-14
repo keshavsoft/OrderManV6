@@ -10,7 +10,8 @@ const afterMutation = async ({
     inVisibleColumns,
     onDelete,
     isBuildDataLists,
-    inShowActions, inShowSerial
+    inShowActions, inShowSerial,
+    inShowTable
 }) => {
 
     // 1. get fresh data
@@ -21,16 +22,18 @@ const afterMutation = async ({
     // 2. update store
     inDataStore.setData(freshData);
 
-    // 3. refresh UI (only body)
-    refreshTable({
-        inContainerEl, inDataStore, inDom, inOptions,
-        inVisibleColumns, inServices, inEndPoints,
-        onDelete, isBuildDataLists, inShowActions,
-        inShowSerial
-    });
+    if (inShowTable) {
+        // 3. refresh UI (only body)
+        refreshTable({
+            inContainerEl, inDataStore, inDom, inOptions,
+            inVisibleColumns, inServices, inEndPoints,
+            onDelete, isBuildDataLists, inShowActions,
+            inShowSerial
+        });
 
-    // 4. restore focus (optional)
-    focusFooter({ inContainerEl });
+        // 4. restore focus (optional)
+        focusFooter({ inContainerEl });
+    };
 };
 
 const focusFooter = ({ inContainerEl }) => {
