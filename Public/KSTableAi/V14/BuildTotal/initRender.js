@@ -13,6 +13,13 @@ const uiClasses = {
     labelClass: 'w-40',
 };
 
+let uiClassesToApply = {};
+
+uiClassesToApply.tableClasses = {
+    tdClass: "px-4 py-2 border",
+    serialClass: "px-4 py-2 border"
+};
+
 const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, inEndPoints, inColumnsConfig }) => {
     const data = inDataStore.getData();
     const columns = inDataStore.getColumns();
@@ -104,7 +111,8 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
             inShowActions: showActions,
             inShowSerial: showSerial,
             inIsDisabled: inIsDisabled,
-            inDefaultRow: defaultRow
+            inDefaultRow: defaultRow,
+            inUiClasses: uiClassesToApply.tableClasses
         });
     };
 

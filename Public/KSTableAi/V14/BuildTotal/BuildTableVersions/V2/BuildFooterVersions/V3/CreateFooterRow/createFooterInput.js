@@ -1,7 +1,7 @@
 // createFooterInput.js
 
 const createFooterInput = ({ key, onChangeFunc, showDataList, inColumnsConfig,
-    inDefaultValue
+    inDefaultValue, inClasses
 }) => {
     const input = document.createElement("input");
 

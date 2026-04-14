@@ -2,12 +2,12 @@ import { startFunc as createFooterRow } from "./CreateFooterRow/start.js";
 import { saveFooterRow } from "./saveFooterRow.js";
 
 const buildFooter = ({ inDataStore, inContainerEl, inDom, inServices, inOptions, inEndPoints, inColumnsConfig,
-    inVisibleColumns, inShowSerial, inDefaultRow
+    inVisibleColumns, inShowSerial, inDefaultRow, inTdClass, inSerialClass
 }) => {
     const defaultObject = inDataStore.getDefaultRow();
     const visibleColumns = inVisibleColumns;
     const defaultRow = inDefaultRow;
-    debugger;
+    // debugger;
     const handleSave = async (e) => {
         const tr = e.target.closest("tr");
 
@@ -35,7 +35,8 @@ const buildFooter = ({ inDataStore, inContainerEl, inDom, inServices, inOptions,
             inColumnsConfig,
             onSave: handleSave
         },
-        inDefaultRow: defaultRow
+        inDefaultRow: defaultRow,
+        inTdClass, inSerialClass
     });
 
     const tableFooter = inDom.getTableFooter(inContainerEl);

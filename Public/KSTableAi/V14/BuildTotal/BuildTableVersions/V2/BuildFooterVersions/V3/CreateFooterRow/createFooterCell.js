@@ -2,9 +2,9 @@
 
 import { createFooterInput } from "./createFooterInput.js";
 
-const createFooterCell = ({ key, onChangeFunc, showDataList, inColumnsConfig, inDefaultValue }) => {
+const createFooterCell = ({ key, onChangeFunc, showDataList, inColumnsConfig, inDefaultValue, inTdClass }) => {
     const td = document.createElement("td");
-    td.className = "px-4 py-2 border";
+    td.className = inTdClass;
 
     const input = createFooterInput({ key, onChangeFunc, showDataList, inColumnsConfig, inDefaultValue });
     td.appendChild(input);

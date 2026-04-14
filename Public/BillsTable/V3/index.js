@@ -69,7 +69,7 @@ const configSubTable = {
             show: false,
         },
         table: {
-            isDisabled: true,
+            isDisabled: false,
             showTable: true,
             showRowOptions: true,
             showSerial: true,

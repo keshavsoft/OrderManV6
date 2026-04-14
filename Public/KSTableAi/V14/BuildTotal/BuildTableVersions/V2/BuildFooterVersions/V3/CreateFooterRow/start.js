@@ -1,21 +1,21 @@
 import { startFunc as insertRowCells } from "./insertCells.js";
 import { appendFooterSaveCell } from "./appendFooterSaveCell.js";
 
-const startFunc = ({ keys, options, inDefaultRow }) => {
+const startFunc = ({ keys, options, inDefaultRow, inTdClass, inSerialClass }) => {
     const tr = document.createElement("tr");
 
-    if (options?.showSerial) tr.appendChild(getSerialColumn());
+    if (options?.showSerial) tr.appendChild(getSerialColumn({ inSerialClass }));
 
-    insertRowCells({ keys, tr, options, inDefaultRow });
+    insertRowCells({ keys, tr, options, inDefaultRow, inTdClass });
 
     tr.appendChild(appendFooterSaveCell(options));
 
     return tr;
 };
 
-const getSerialColumn = () => {
+const getSerialColumn = ({ inSerialClass }) => {
     const thIndex = document.createElement("td");
-    thIndex.className = "px-4 py-2 border";
+    thIndex.className = inSerialClass;
 
     return thIndex
 };

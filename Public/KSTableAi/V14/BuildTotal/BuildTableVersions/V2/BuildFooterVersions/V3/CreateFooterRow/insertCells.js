@@ -1,8 +1,8 @@
 import { createFooterCell } from "./createFooterCell.js";
 
-const startFunc = ({ keys, tr, options = {}, inDefaultRow }) => {
+const startFunc = ({ keys, tr, options = {}, inDefaultRow, inTdClass }) => {
     const defaultRow = inDefaultRow;
-    debugger;
+    // debugger;
     keys.forEach(key => {
         const defaultValue = defaultRow[key];
 
@@ -11,7 +11,8 @@ const startFunc = ({ keys, tr, options = {}, inDefaultRow }) => {
             inDefaultValue: defaultValue,
             onChangeFunc: options.onChange,
             showDataList: options.showDataList,
-            inColumnsConfig: options.inColumnsConfig
+            inColumnsConfig: options.inColumnsConfig,
+            inTdClass
         }));
     });
 };

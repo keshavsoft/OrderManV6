@@ -5,7 +5,7 @@ import { lockTable } from "./lockTable.js";
 
 const initTable = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, inEndPoints, inColumnsConfig,
     inShowFooter, inData, inVisibleColumns, onDelete, inShowActions, inShowSerial, inIsDisabled,
-    inDefaultRow }) => {
+    inDefaultRow, inUiClasses }) => {
     const data = inData;
     const columns = inDataStore.getColumns();
     const visibleColumns = inVisibleColumns;
@@ -47,7 +47,9 @@ const initTable = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, i
             inVisibleColumns,
             inShowActions,
             inShowSerial,
-            inDefaultRow
+            inDefaultRow,
+            inTdClass: inUiClasses.tdClass,
+            inSerialClass: inUiClasses.serialClass
         });
     };
 
