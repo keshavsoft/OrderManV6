@@ -1,4 +1,4 @@
-import { initTable } from "../../KSTableAi/V14/entry.js";
+import { initTable } from "../../KSTableAi/V15/entry.js";
 
 const config = {
     containerId: 'kSTableContainer',
@@ -54,7 +54,11 @@ const configSubTable = {
         update: "",
         delete: "/Api/V9/BillsTable/Delete",
         read: "/Api/V9/ItemsTable/filter?ParentPk=1",
-        find: "/Api/V9/BillsTable/find"
+        find: "/Api/V9/BillsTable/find",
+        dataListEndpoints: {
+            items: "/Api/V9/StockItems/ShowAll",
+            ledgers: "/Api/V9/LedgerNames/ShowAll"
+        }
     },
     options: {
         firstRow: {
@@ -66,7 +70,7 @@ const configSubTable = {
             showSaveButton: false
         },
         dataList: {
-            show: false,
+            show: true,
         },
         table: {
             isDisabled: false,
@@ -83,8 +87,14 @@ const configSubTable = {
         }
     },
     columnsConfig: [
-        { columnName: "ItemName", isRequired: true, tableFooterDataListShow: true },
-        { columnName: "Rate", isRequired: true },
+        {
+            columnName: "ItemName", isRequired: true,
+            tableFooterDataListShow: true, dataListSource: "items"
+        },
+        {
+            columnName: "Rate", isRequired: true,
+            tableFooterDataListShow: true
+        },
         { columnName: "Qty", isRequired: false },
         { columnName: "ParentPk", isRequired: false, defaultValue: 1 },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
