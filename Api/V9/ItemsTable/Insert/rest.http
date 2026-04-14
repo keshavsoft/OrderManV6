@@ -1,0 +1,13 @@
+
+POST http://localhost:3000/Api/V9/ItemsTable/Insert
+Content-Type: application/json
+
+ {
+    "ItemName": "Monofilament Yarn Kgs-3916 18%",
+    "Rate": "300",
+    "Qty": "30",
+    "Amount": "9000",
+    "TaxPer": "18",
+    "Uom": "Kgs",
+    "ParentPk": "1"
+  }

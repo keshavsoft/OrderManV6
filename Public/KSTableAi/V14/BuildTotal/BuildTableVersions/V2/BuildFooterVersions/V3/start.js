@@ -2,7 +2,7 @@ import { startFunc as createFooterRow } from "./CreateFooterRow/start.js";
 import { saveFooterRow } from "./saveFooterRow.js";
 
 const buildFooter = ({ inDataStore, inContainerEl, inDom, inServices, inOptions, inEndPoints, inColumnsConfig,
-    inVisibleColumns, inShowSerial, inDefaultRow, inTdClass, inSerialClass
+    inVisibleColumns, inShowSerial, inDefaultRow, inTdClass, inSerialClass, inShowActions
 }) => {
     const defaultObject = inDataStore.getDefaultRow();
     const visibleColumns = inVisibleColumns;

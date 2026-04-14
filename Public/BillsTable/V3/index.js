@@ -50,7 +50,7 @@ const configSubTable = {
     containerId: 'kSSubTableContainer',
     tableName: "Bills",
     endPoints: {
-        create: "/Api/V9/BillsTable/Insert",
+        create: "/Api/V9/ItemsTable/Insert",
         update: "",
         delete: "/Api/V9/BillsTable/Delete",
         read: "/Api/V9/ItemsTable/filter?ParentPk=1",
