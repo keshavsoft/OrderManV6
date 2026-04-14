@@ -89,7 +89,7 @@ const configSubTable = {
     columnsConfig: [
         {
             columnName: "ItemName", isRequired: true,
-            tableFooterDataListShow: true, dataListSource: "items"
+            tableFooterDataListShow: true, dataListSource: "items.StockItemName"
         },
         {
             columnName: "Rate", isRequired: true,
