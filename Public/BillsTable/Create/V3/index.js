@@ -13,7 +13,11 @@ const config = {
         update: "",
         delete: "/Api/V9/BillsTable/Delete",
         read: "/Api/V9/BillsTable/ShowAll",
-        find: "/Api/V9/BillsTable/find"
+        find: "/Api/V9/BillsTable/find",
+        dataListEndpoints: {
+            ledgers: "/Api/V9/LedgerNames/ShowAll"
+        }
+
     },
     options: {
         firstRow: {
@@ -25,7 +29,7 @@ const config = {
             showSaveButton: true
         },
         dataList: {
-            show: false,
+            show: true,
         },
         table: {
             isDisabled: true,
@@ -42,7 +46,10 @@ const config = {
         }
     },
     columnsConfig: [
-        { columnName: "LedgerName", isRequired: true, tableFooterDataListShow: true },
+        {
+            columnName: "LedgerName", isRequired: true,
+            tableFooterDataListShow: true, dataListSource: "ledgers.LedgerName"
+        },
         { columnName: "InvoiceDate", isRequired: false, defaultValue: "20260327" },
         { columnName: "pk", isPrimaryKey: true, isVisible: false }
     ],
