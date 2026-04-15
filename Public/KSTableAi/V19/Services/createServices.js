@@ -13,7 +13,6 @@ export const createServices = ({ tableName }) => {
             find: ({ inEndPoint, id }) => findItem({ inEndPoint, id }),
             vertical: {
                 save: async ({ inEndPoint, payload }) => {
-                    debugger
                     const res = await fetch(inEndPoint, {
                         method: "POST",
                         headers: {
@@ -21,7 +20,20 @@ export const createServices = ({ tableName }) => {
                         },
                         body: JSON.stringify(payload)
                     });
-debugger
+
+                    return await res;
+                }
+            },
+            vertical: {
+                save: async ({ inEndPoint, payload }) => {
+                    const res = await fetch(inEndPoint, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
                     return await res;
                 }
             }

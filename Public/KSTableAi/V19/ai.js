@@ -14,11 +14,12 @@ import { loadDataFlow } from "./Core/loadDataFlow.js";
 import { setupServices } from "./Services/setupServices.js";
 import { mountTableUI } from "./UI/mountTableUI.js";
 import { mountVerticalUI } from "./UI/mountVertical.js";
+import { mountTableOnlyUI } from "./UI/mountTableOnly.js";
 
 class KSAiTable {
     constructor(inConfig) {
         let config = normalizeConfig(inConfig);
-        config = applyMode(config);
+        // config = applyMode(config);
         validateConfig(config);
         // debugger;
         const { containerId, options, endPoints, columnsConfig,
@@ -95,6 +96,19 @@ class KSAiTable {
         this.mountVertical();
     };
 
+    async initTable() {
+        this.setupServices();
+
+        await loadDataFlow({
+            config: this.config,
+            services: this.services,
+            dataStore: this.dataStore,
+            endPoints: this.endPoints
+        });
+
+        this.mountTableOnly();
+    };
+
     setupServices() {
         this.services = setupServices({
             config: this.config,
@@ -118,6 +132,21 @@ class KSAiTable {
 
     mountVertical() {
         mountVerticalUI({
+            containerEl: this.containerEl,
+            dataStore: this.dataStore,
+            dom: this.dom,
+            services: this.services,
+            options: this.options,
+            endPoints: this.endPoints,
+            columnsConfig: this.columnsConfig,
+            uiClasses: this.uiClasses,
+            callbacks: this.callbacks,
+            inConfig: this.config,
+        });
+    };
+    
+    mountTableOnly() {
+        mountTableOnlyUI({
             containerEl: this.containerEl,
             dataStore: this.dataStore,
             dom: this.dom,
