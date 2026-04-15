@@ -1,5 +1,10 @@
 import { initTable } from "../../../KSTableAi/V18/entry.js";
 
+const onSuccess = ({ data }) => {
+    const pk = data?.pk;
+    window.location.href = `/items.html?pk=${pk}`;
+};
+
 const config = {
     containerId: 'kSTableContainer',
     tableName: "Bill Create",
@@ -7,7 +12,7 @@ const config = {
     layout: {
         verticalPosition: "top", // or left/right/bottom
         type: "vertical", // "vertical" | "table" | "vertical-table"
-    }, 
+    },
     endPoints: {
         create: "/Api/V9/BillsTable/Insert",
         update: "",
@@ -59,6 +64,15 @@ const config = {
             rowClass: 'flex items-center space-x-4',
             labelClass: 'w-24 text-sm font-medium',
             inputClass: 'flex-1 border rounded px-3 py-2'
+        }
+    },
+    callbacks: {
+        vertical: {
+            onSuccess: (res) => {
+                // debugger;
+                // const pk = data?.pk;
+                // window.location.href = `/items.html?pk=${pk}`;
+            }
         }
     }
 };

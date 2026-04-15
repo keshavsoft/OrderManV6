@@ -18,8 +18,9 @@ class KSAiTable {
         let config = normalizeConfig(inConfig);
         config = applyMode(config);
         validateConfig(config);
-// debugger;
-        const { containerId, options, endPoints, columnsConfig, uiClasses } = config;
+        // debugger;
+        const { containerId, options, endPoints, columnsConfig,
+            uiClasses, callbacks } = config;
 
         this.config = config;
         this.containerEl = document.getElementById(containerId);
@@ -46,6 +47,8 @@ class KSAiTable {
         this.options = options;
         this.endPoints = endPoints;
         this.columnsConfig = columnsConfig;
+        // constructor
+        this.callbacks = callbacks || {};
     };
 
     mergeUI(defaults, incoming = {}) {
@@ -97,7 +100,8 @@ class KSAiTable {
             options: this.options,
             endPoints: this.endPoints,
             columnsConfig: this.columnsConfig,
-            uiClasses: this.uiClasses
+            uiClasses: this.uiClasses,
+            callbacks: this.callbacks
         });
     };
 };

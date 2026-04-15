@@ -12,12 +12,12 @@ const createButton = ({ inButtonClass, inInputs, inOnSubmit }) => {
     button.textContent = 'Save';
     button.className = buttonClass;
 
-    button.addEventListener('click', (event) => {
+    button.addEventListener('click', async (event) => {
         event.preventDefault(); // 🔥 THIS IS THE KEY
 
         const newItem = collectFormData({ inInputs: inputs });
 
-        onSubmit(newItem);
+        await onSubmit(newItem);
 
         clearFormInputs({ inInputs: inputs });
 

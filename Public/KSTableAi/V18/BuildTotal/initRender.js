@@ -4,9 +4,10 @@ import { buildForm } from "./BuildForm/start.js";
 import { buildDataLists } from "./BuildDataLists/addToDom.js";
 import { hookAllListeners } from "./AddListeners/start.js";
 import { afterMutation } from "./afterMutation.js";
-// merge util
+
 const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, inEndPoints,
-    inColumnsConfig, inUiClasses }) => {
+    inColumnsConfig, inUiClasses, callbacks }) => {
+
     const data = inDataStore.getData();
     const columns = inDataStore.getColumns();
     const visibleColumns = inDataStore.getVisibleColumns();
@@ -70,7 +71,8 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
             inIsDisabled: inIsDisabled,
             showSaveButton,
             inFindData: findData,
-            inShowTable: showTable
+            inShowTable: showTable,
+            incallbacks: callbacks
         });
     };
 

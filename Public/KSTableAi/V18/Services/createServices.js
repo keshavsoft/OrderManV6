@@ -11,6 +11,20 @@ export const createServices = ({ tableName }) => {
             update: (id, payload) => updateItem({ tableName, id, payload }),
             remove: ({ inEndPoint, id }) => deleteItem({ inEndPoint, id }),
             find: ({ inEndPoint, id }) => findItem({ inEndPoint, id }),
-        }
+            vertical: {
+                save: async ({ inEndPoint, payload }) => {
+                    debugger
+                    const res = await fetch(inEndPoint, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload)
+                    });
+debugger
+                    return await res;
+                }
+            }
+        },
     };
 };

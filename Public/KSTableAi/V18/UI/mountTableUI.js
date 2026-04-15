@@ -10,7 +10,8 @@ export const mountTableUI = ({
     options,
     endPoints,
     columnsConfig,
-    uiClasses
+    uiClasses,
+    callbacks
 }) => {
     initRender({
         inContainerEl: containerEl,
@@ -20,6 +21,7 @@ export const mountTableUI = ({
         inOptions: options,
         inEndPoints: endPoints,
         inColumnsConfig: columnsConfig,
-        inUiClasses: uiClasses
+        inUiClasses: uiClasses,
+        callbacks
     });
 };

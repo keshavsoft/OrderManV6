@@ -25,28 +25,37 @@ const buildForm = ({
     inIsDisabled,
     showSaveButton,
     inFindData,
-    inShowTable
+    inShowTable,
+    incallbacks
 }) => {
     const handleSave = async (newItem) => {
-        await inServices.actions.create({
+        debugger;
+        const res = await inServices.actions.vertical.save({
             inEndPoint: inEndPoints.create,
             payload: newItem
         });
+        
+        if (res.ok) {
+            if (incallbacks?.vertical?.onSuccess) {
+                incallbacks?.vertical?.onSuccess(res);
+                return; // 🚫 stop library flow
+            };
+        };
 
-        afterMutation({
-            inServices,
-            inEndPoints,
-            inDataStore,
-            inContainerEl,
-            inDom,
-            inOptions,
-            inVisibleColumns,
-            onDelete,
-            isBuildDataLists,
-            inShowActions, inShowSerial,
-            inDefaultRow,
-            inShowTable
-        });
+        // afterMutation({
+        //     inServices,
+        //     inEndPoints,
+        //     inDataStore,
+        //     inContainerEl,
+        //     inDom,
+        //     inOptions,
+        //     inVisibleColumns,
+        //     onDelete,
+        //     isBuildDataLists,
+        //     inShowActions, inShowSerial,
+        //     inDefaultRow,
+        //     inShowTable
+        // });
     };
 
     const form = createForm({
