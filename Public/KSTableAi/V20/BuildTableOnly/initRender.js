@@ -21,22 +21,29 @@ const initRender = ({ inContainerEl, inDataStore, inDom, inServices, inOptions, 
     const showTable = inOptions.table.showTable;
 
     const handleDelete = async ({ presentPk }) => {
-        await inServices.actions.remove({
+        debugger;
+        const fromDelete = await inServices.actions.table.delete({
             inEndPoint: inEndPoints.delete,
             id: presentPk
         })
 
-        if (inConfig?.callbacks?.table?.onDelete) {
-            inConfig?.callbacks?.table?.onDelete();
+        if (fromDelete.ok) {
+            if (inConfig?.callbacks?.table?.onDelete) {
+                const fromClient = await inConfig?.callbacks?.table?.onDelete({ toDeletePk: presentPk });
+
+                if (fromClient.ok) {
+
+                    afterMutation({
+                        inServices, inEndPoints, inDataStore, inContainerEl,
+                        inDom, inOptions, inVisibleColumns: visibleColumns,
+                        onDelete: handleDelete, isBuildDataLists,
+                        inShowActions: showActions,
+                        inShowSerial: showSerial, inShowTable: showTable
+                    });
+                };
+            };
         };
 
-        afterMutation({
-            inServices, inEndPoints, inDataStore, inContainerEl,
-            inDom, inOptions, inVisibleColumns: visibleColumns,
-            onDelete: handleDelete, isBuildDataLists,
-            inShowActions: showActions,
-            inShowSerial: showSerial, inShowTable: showTable
-        });
     };
     // debugger;
     if (isBuildDataLists) {

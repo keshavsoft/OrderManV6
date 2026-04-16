@@ -36,6 +36,15 @@ export const createServices = ({ tableName }) => {
 
                     return await res;
                 }
+            },
+            table: {
+                delete: async ({ inEndPoint, id }) => {
+                    const res = await fetch(`${inEndPoint}/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    return await res;
+                }
             }
         },
     };

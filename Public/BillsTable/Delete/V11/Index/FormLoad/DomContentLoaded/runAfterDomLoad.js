@@ -1,3 +1,5 @@
+import { startFetchAsGet } from "./FetchAsDelete/start.js";
+
 import { initTableOnly } from "../../../../../../KSTableAi/V20/entry.js";
 
 const runAfterDomLoad = () => {
@@ -70,12 +72,14 @@ const buildUi = async () => {
         },
         callbacks: {
             table: {
-                onDelete: async (res) => {
-                    console.log("aaaaaaaaaaaaaa : ", res);
+                onDelete: async ({ toDeletePk }) => {
+                    const fromDelete = await startFetchAsGet({
+                        inQuery: {
+                            ParentPk: toDeletePk
+                        }
+                    });
 
-                    // const fromReponse = await res.text();
-
-                    // window.location.href = `../../WithSubTable/V8/index.html?pk=${fromReponse}`;
+                    return await fromDelete;
                 }
             }
         }
